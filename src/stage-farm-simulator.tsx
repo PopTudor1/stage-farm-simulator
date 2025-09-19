@@ -171,7 +171,7 @@ export default function StageFarmSimulator() {
 
   return (
     <div className="farm-container">
-      <span className="title">Guild Battle Viewer</span>
+      <span className="title">Stage Farming Simulator</span>
       <span className="madeBy">
         ( made by Tudique26 from the KNIGHTSXORDER guild on Trakan US server )
       </span>
