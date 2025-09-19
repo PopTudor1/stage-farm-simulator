@@ -1,0 +1,16 @@
+.stage-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid white;
+  padding: 8px;
+}
+
+.stage-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

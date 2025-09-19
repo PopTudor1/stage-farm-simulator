@@ -1,0 +1,35 @@
+.rates-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.rate-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.label {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.input {
+  width: 100px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.step {
+  font-size: 20px;
+  color: yellow;
+  font-weight: bold;
+}
