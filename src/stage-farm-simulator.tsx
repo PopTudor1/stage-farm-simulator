@@ -159,9 +159,9 @@ export default function StageFarmSimulator() {
       <span className="madeBy">
         ( made by Tudique26 from the KNIGHTSXORDER guild on Trakan US server )
       </span>
-      <span style={{ color: "red", fontSize: "24px" }}>
+      <span className="disclaimer">
         <strong>DISCLAIMER:</strong>{" "}
-        <span style={{ color: "orange", fontSize: "20px" }}>
+        <span className="disclaimer-message">
           The formulas and values displayed are only APPROXIMATIONS. Please take
           them with a grain of salt. They may be updated in future releases.
         </span>
@@ -234,7 +234,7 @@ export default function StageFarmSimulator() {
       <div className="results-container">
         {bestXPStageResult && (
           <span className="best-stage-row">
-            <strong>Best Stage to Farm XP:</strong>
+            <strong>Best Stage for XP:</strong>
             <span className="value">
               {bestXPStageResult.stage} ({bestXPStageResult.xpPerMinute} XP/min)
             </span>
@@ -242,7 +242,7 @@ export default function StageFarmSimulator() {
         )}
         {bestGoldStageResult && (
           <span className="best-stage-row">
-            <strong>Best Stage to Farm Gold:</strong>
+            <strong>Best Stage for Gold:</strong>
             <span className="value">
               {bestGoldStageResult.stage} ({bestGoldStageResult.goldPerMinute}{" "}
               Gold/min)

@@ -10,17 +10,21 @@ export default function RatesForm({ rates, setRates }: Props) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    // Allow clearing the input
     if (value === "") {
-      setRates((prev) => ({ ...prev, [name]: "" }));
+      setRates({
+        ...rates,
+        [name]: "", // or "" if you want, but number fields should stay numbers
+      });
       return;
     }
 
-    // Parse and clamp numeric input
     const parsed = Number(value);
     if (!isNaN(parsed)) {
       const clamped = Math.min(Math.max(parsed, 0), 999999);
-      setRates((prev) => ({ ...prev, [name]: clamped }));
+      setRates({
+        ...rates,
+        [name]: clamped,
+      });
     }
   };
 
@@ -37,7 +41,7 @@ export default function RatesForm({ rates, setRates }: Props) {
           className="input"
           min={0}
           max={999999}
-          placeholder="Berserker value"
+          placeholder="value"
         />
       </div>
       <div className="rate-container">
@@ -50,7 +54,7 @@ export default function RatesForm({ rates, setRates }: Props) {
           className="input"
           min={0}
           max={999999999}
-          placeholder="Berserker value"
+          placeholder="value"
         />
       </div>
 
