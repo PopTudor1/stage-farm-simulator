@@ -30,7 +30,9 @@ export default function RatesForm({ rates, setRates }: Props) {
 
   return (
     <div className="rates-form-container">
-      <span className="step">Step 1: Enter your berserker stats.</span>
+      <span className="step">
+        Step 1: Enter your berserker stats. (You can leave any field empty.)
+      </span>
       <div className="rate-container">
         <label className="label">Gold Rate:</label>
         <input
@@ -53,7 +55,20 @@ export default function RatesForm({ rates, setRates }: Props) {
           onChange={handleChange}
           className="input"
           min={0}
-          max={999999999}
+          max={999999}
+          placeholder="value"
+        />
+      </div>
+      <div className="rate-container">
+        <label className="label">Paragon experience Rate:</label>
+        <input
+          type="number"
+          name="paragonExperienceRate" // important for dynamic handling
+          value={rates.paragonExperienceRate}
+          onChange={handleChange}
+          className="input"
+          min={0}
+          max={999999}
           placeholder="value"
         />
       </div>

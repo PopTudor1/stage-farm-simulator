@@ -28,11 +28,11 @@ export default function StageFarmSimulator() {
   );
 
   const [rates, setRates] = useState<BerserkerRatesModel>({
-    goldRate: 1,
-    experienceRate: 1,
-    enhancementStoneDropRate: 1,
-    itemDropRate: 1,
-    paragonExperienceRate: 1,
+    goldRate: 0,
+    experienceRate: 0,
+    enhancementStoneDropRate: 0,
+    itemDropRate: 0,
+    paragonExperienceRate: 0,
   });
 
   const [bestXPStageResult, setBestXPStageResult] = useState<{
@@ -90,11 +90,27 @@ export default function StageFarmSimulator() {
   // } | null>(null);
 
   const handleSubmitAll = () => {
-    const xpResult = findBestXPFarmingStage(
-      formsData,
-      numForms,
-      rates.experienceRate
-    );
+    let xpResult;
+    if (
+      rates.paragonExperienceRate == null ||
+      rates.paragonExperienceRate == 0
+    ) {
+      console.log("merge normal");
+
+      xpResult = findBestXPFarmingStage(
+        formsData,
+        numForms,
+        rates.experienceRate
+      );
+    } else {
+      console.log("merge cu paragon");
+
+      xpResult = findBestXPFarmingStage(
+        formsData,
+        numForms,
+        rates.paragonExperienceRate * 100
+      );
+    }
     setBestXPStageResult(xpResult);
 
     const goldResult = findBestGoldFarmingStage(
@@ -166,9 +182,9 @@ export default function StageFarmSimulator() {
           them with a grain of salt. They may be updated in future releases.
         </span>
       </span>
-      <div>
-        <RatesForm rates={rates} setRates={setRates} />
-      </div>
+
+      <RatesForm rates={rates} setRates={setRates} />
+
       <div className="stage-selector-container">
         <span className="step">
           Step 2: Choose how many stages you want to compare.{" "}
