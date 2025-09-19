@@ -37,7 +37,7 @@ export default function StageFarmSimulator() {
 
   const [bestXPStageResult, setBestXPStageResult] = useState<{
     stage: number;
-    xpPerMinute: number;
+    xpPerMinute: string;
   } | null>(null);
 
   const [bestGoldStageResult, setBestGoldStageResult] = useState<{

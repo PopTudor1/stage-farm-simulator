@@ -1,3 +1,4 @@
+import { GoldUnit, goldUnitValues } from "../enums/gold-unit-enum";
 import { StageRewardsModel } from "../models/stage-rewards-model";
 
 // Finder with experienceRate
@@ -5,7 +6,7 @@ export function findBestXPFarmingStage(
   formsData: StageRewardsModel[],
   numForms: number,
   experienceRate: number
-): { stage: number; xpPerMinute: number } | null {
+): { stage: number; xpPerMinute: string } | null {
   const visibleForms = formsData.slice(0, numForms);
 
   if (visibleForms.length === 0) return null;
@@ -31,7 +32,21 @@ export function findBestXPFarmingStage(
     }
   }
 
-  return { stage: bestStage, xpPerMinute: maxXPPerMinute };
+  return { stage: bestStage, xpPerMinute: formatExp(maxXPPerMinute) };
+}
+
+// Convert raw number to best-fitting unit
+export function formatExp(amount: number): string {
+  const units = Object.entries(goldUnitValues).reverse() as [
+    GoldUnit,
+    number
+  ][];
+  for (const [unit, value] of units) {
+    if (amount >= value) {
+      return (amount / value).toFixed(3) + unit;
+    }
+  }
+  return amount.toFixed(3); // fallback: plain number
 }
 
 // Main calculation
